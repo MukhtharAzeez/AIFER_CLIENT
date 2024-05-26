@@ -23,7 +23,7 @@ function Header() {
       <div className="w-[50%]">
         <Title title="Power Dale" className="text-3xl font-bold pl-4" />
       </div>
-      <div className="w-[50%] flex gap-8">
+      <div className="w-[50%] flex gap-8 mt-3">
         {
           links.map((link, index) => (
             <Link  to={link.link} key={index} className={`hover:text-teal-800 ${selected === link.title ? "text-teal-800 font-semibold" : ""}`} onClick={() => setSelected(link.title)}>{link.title}</Link>

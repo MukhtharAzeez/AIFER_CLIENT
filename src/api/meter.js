@@ -4,4 +4,8 @@ const getAllMeters = () => {
     return axiosInstance.get('get-all-meters')
 }
 
-export { getAllMeters }
+const addNewMeter = () => {
+    return axiosInstance.post('create-meter')
+}
+
+export { getAllMeters, addNewMeter }
