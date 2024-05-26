@@ -16,4 +16,8 @@ const addReadings = (readings) => {
     return axiosInstance.post(`readings/store`, readings)
 }
 
-export { getAllMeters, addNewMeter, getAMeterReadings, addReadings }
+const getPricingPlans = () => {
+    return axiosInstance.get('get-pricing-plans')
+}
+
+export { getAllMeters, addNewMeter, getAMeterReadings, addReadings, getPricingPlans }
