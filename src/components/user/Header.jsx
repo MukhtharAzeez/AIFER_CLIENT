@@ -10,10 +10,6 @@ function Header() {
         link: "/",
       },
       {
-        title: "Add readings",
-        link: "/add-readings",
-      },
-      {
         title: "Pricing Plans",
         link: "/pricing",
       },

@@ -20,8 +20,11 @@ const Alert = ({ alert }) => {
             <h2 className="mt-2 font-semibold text-gray-800 dark:text-gray-200">
               {alert.title}
             </h2>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-200 leading-relaxed">
-              {alert.message}
+            <p
+              className="mt-2 text-sm text-gray-600 dark:text-gray-200 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: alert.message }}
+            >
+              {/* {alert.message} */}
             </p>
           </div>
 

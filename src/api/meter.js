@@ -8,4 +8,12 @@ const addNewMeter = () => {
     return axiosInstance.post('create-meter')
 }
 
-export { getAllMeters, addNewMeter }
+const getAMeterReadings = (meterId) => {
+    return axiosInstance.get(`readings/read/${meterId}`)
+}
+
+const addReadings = (readings) => {
+    return axiosInstance.post(`readings/store`, readings)
+}
+
+export { getAllMeters, addNewMeter, getAMeterReadings, addReadings }
