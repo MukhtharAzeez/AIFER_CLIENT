@@ -6,10 +6,13 @@ import Button from "../shared/Button";
 import InputField from "../shared/InputField";
 import Icon from "@mdi/react";
 import { mdiClose, mdiPlus } from "@mdi/js";
+import { useSharedStore } from "../../contexts/AlertContext";
 
 function MeterDetailsComponent() {
   // Get meterId from params
   const { meterId } = useParams();
+  const { setIsLoading } = useSharedStore();
+
   const [meterDetails, setMeterDetails] = useState([]);
   const [modelOpen, setModalOpen] = useState(false);
   const [readings, setReadings] = useState([
@@ -20,6 +23,7 @@ function MeterDetailsComponent() {
   ]);
 
   useEffect(() => {
+    setIsLoading(true);
     getAMeterReadings(meterId)
       .then((res) => {
         setMeterDetails(res.data.data.electricityReadings);
@@ -28,6 +32,9 @@ function MeterDetailsComponent() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 

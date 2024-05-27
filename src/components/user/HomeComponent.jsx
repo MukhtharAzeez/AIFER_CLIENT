@@ -6,20 +6,26 @@ import { mdiPlus } from "@mdi/js";
 import Button from '../shared/Button';
 import Card from '../shared/Card';
 import Title from "../shared/Title";
+import EmptyComponent from '../shared/EmptyComponent';
 
 
 function HomeComponent() {
   const [meters, setMeters] = useState([]);
   const navigate = useNavigate();
-  const { showAlert, emptyAlert } = useSharedStore();
+  const { showAlert, emptyAlert, setIsLoading } = useSharedStore();
+
 
   useEffect(() => {
+    setIsLoading(true)
     getAllMeters()
       .then((res) => {
-        setMeters(res.data.data);
+        setMeters(res.data.data);        
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false)
       });
   }, []);
 
@@ -55,7 +61,9 @@ function HomeComponent() {
       <div className="flex w-full justify-end my-4">
         <Button text="Add Meter " functionToCall={addMeter} />
       </div>
-      <div className="flex flex-wrap w-full gap-5 justify-center">
+      {
+        meters.length ? (
+          <div className="flex flex-wrap w-full gap-5 justify-center">
         {meters.map((meter) => (
           <Card
             key={meter._id}
@@ -67,6 +75,10 @@ function HomeComponent() {
           </Card>
         ))}
       </div>
+        ) : (
+          <EmptyComponent minHeight={"min-h-[400px]"}/>
+        )
+      }
     </div>
   );
 }

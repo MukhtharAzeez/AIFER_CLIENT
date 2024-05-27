@@ -5,9 +5,10 @@ import Alert from "./components/shared/Alert";
 import { useSharedStore } from "./contexts/AlertContext";
 import MeterDetails from "./pages/MeterDetails";
 import PricingPlan from "./pages/PricingPlan";
+import Loading from "./components/shared/Loading";
 
 function App() {
-    const { alert } = useSharedStore();
+    const { alert, isLoading } = useSharedStore();
 
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       {alert.title && <Alert alert={alert} />}
+      {isLoading && <Loading />}
     </>
   );
 }

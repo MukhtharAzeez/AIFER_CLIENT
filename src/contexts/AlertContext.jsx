@@ -87,6 +87,7 @@ export const SharedStoreProvider = ({ children }) => {
         emptyAlert,
         isLoading,
         toggleLoading,
+        setIsLoading,
         error,
         showError,
         setError,

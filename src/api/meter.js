@@ -20,4 +20,12 @@ const getPricingPlans = () => {
     return axiosInstance.get('get-pricing-plans')
 }
 
-export { getAllMeters, addNewMeter, getAMeterReadings, addReadings, getPricingPlans }
+const comparePricePlan = (meterId) => {
+    return axiosInstance.get(`price-plans/compare-all/${meterId}`)
+}
+
+const recommendedPricePlans = (meterId) => {
+    return axiosInstance.get(`price-plans/recommend/${meterId}`)
+}
+
+export { getAllMeters, addNewMeter, getAMeterReadings, addReadings, getPricingPlans, comparePricePlan, recommendedPricePlans }
